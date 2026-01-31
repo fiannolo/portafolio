@@ -68,22 +68,81 @@
   animation: window-close 0.15s ease-in forwards;
 }
 
-/* Genie effect for minimize - simplified version */
-@keyframes window-minimize {
+/* Enhanced Genie effect for minimize - authentic Mac OS X Tiger */
+.genie-minimize {
+  animation: genie-minimize 0.5s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes genie-minimize {
   0% {
     opacity: 1;
-    transform: scale(1) translateY(0) perspective(1000px) rotateX(0deg);
-    transform-origin: bottom center;
+    transform: scale(1) translate(0, 0);
+    transform-origin: center center;
+    filter: blur(0px);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(0.8) translate(var(--genie-dx) * 0.2, var(--genie-dy) * 0.2);
+    filter: blur(0.5px);
+  }
+  40% {
+    opacity: 0.9;
+    transform: scale(0.6) translate(var(--genie-dx) * 0.4, var(--genie-dy) * 0.4) scaleY(0.8);
+    filter: blur(1px);
+  }
+  60% {
+    opacity: 0.7;
+    transform: scale(0.4) translate(var(--genie-dx) * 0.6, var(--genie-dy) * 0.6) scaleY(0.5);
+    filter: blur(2px);
+  }
+  80% {
+    opacity: 0.4;
+    transform: scale(0.2) translate(var(--genie-dx) * 0.8, var(--genie-dy) * 0.8) scaleY(0.2);
+    filter: blur(3px);
   }
   100% {
     opacity: 0;
-    transform: scale(0.1, 0.05) translateY(80vh) perspective(1000px) rotateX(-30deg);
-    transform-origin: bottom center;
+    transform: scale(0.05) translate(var(--genie-dx), var(--genie-dy)) scaleY(0.05);
+    filter: blur(4px);
   }
 }
 
-.window-minimizing {
-  animation: window-minimize 0.5s cubic-bezier(0.4, 0, 1, 1) forwards;
+/* Genie restore from dock */
+.genie-restore {
+  animation: genie-restore 0.4s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+@keyframes genie-restore {
+  0% {
+    opacity: 0;
+    transform: scale(0.05) translate(var(--genie-dx), var(--genie-dy)) scaleY(0.05);
+    filter: blur(4px);
+  }
+  20% {
+    opacity: 0.3;
+    transform: scale(0.2) translate(var(--genie-dx) * 0.8, var(--genie-dy) * 0.8) scaleY(0.2);
+    filter: blur(3px);
+  }
+  40% {
+    opacity: 0.6;
+    transform: scale(0.4) translate(var(--genie-dx) * 0.6, var(--genie-dy) * 0.6) scaleY(0.5);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: scale(0.6) translate(var(--genie-dx) * 0.4, var(--genie-dy) * 0.4) scaleY(0.8);
+    filter: blur(1px);
+  }
+  80% {
+    opacity: 0.95;
+    transform: scale(0.9) translate(var(--genie-dx) * 0.2, var(--genie-dy) * 0.2);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+    filter: blur(0px);
+  }
 }
 
 /* Window restore from minimize */

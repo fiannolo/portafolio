@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useWindowManager } from '../../contexts/WindowManagerContext';
 import { useSound } from '../../hooks/useSound';
 
@@ -46,7 +47,7 @@ export function DockItem({ item, index, mouseX, dockRef }) {
     if (!isRunning && item.appType) {
       setIsBouncing(true);
       play('dockBounce');
-      setTimeout(() => setIsBouncing(false), 800);
+      setTimeout(() => setIsBouncing(false), 1200); // Enhanced bounce duration
     } else {
       play('click');
     }
@@ -62,7 +63,7 @@ export function DockItem({ item, index, mouseX, dockRef }) {
   const size = getSize();
 
   return (
-    <button
+    <motion.button
       ref={itemRef}
       className="relative flex flex-col items-center cursor-pointer bg-transparent border-none"
       onMouseEnter={() => setShowTooltip(true)}
@@ -73,11 +74,16 @@ export function DockItem({ item, index, mouseX, dockRef }) {
         marginBottom: '0px',
         padding: '0 2px',
       }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       {/* Tooltip */}
       {showTooltip && (
-        <div
+        <motion.div
           className="absolute px-3 py-1.5 rounded whitespace-nowrap pointer-events-none z-50"
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 5 }}
           style={{
             bottom: size + 14,
             background: 'rgba(0, 0, 0, 0.75)',
@@ -101,16 +107,26 @@ export function DockItem({ item, index, mouseX, dockRef }) {
               borderTop: '6px solid rgba(0, 0, 0, 0.75)',
             }}
           />
-        </div>
+        </motion.div>
       )}
 
       {/* Icon container - sits ON the dock */}
-      <div
-        className={isBouncing ? 'dock-bounce' : ''}
-        style={{
+      <motion.div
+        animate={{
           width: size,
           height: size,
-          transition: mouseX !== null ? 'all 0.08s ease-out' : 'all 0.15s ease-out',
+          y: isBouncing ? [0, -8, -4, -12, -6, -10, -4, -8, 0] : 0,
+        }}
+        transition={{
+          width: { type: "spring", stiffness: 300, damping: 25 },
+          height: { type: "spring", stiffness: 300, damping: 25 },
+          y: isBouncing ? {
+            duration: 1.2,
+            times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1],
+            ease: "easeInOut"
+          } : {}
+        }}
+        style={{
           transformOrigin: 'bottom center',
           marginBottom: '4px',
         }}
@@ -124,29 +140,42 @@ export function DockItem({ item, index, mouseX, dockRef }) {
           }}
           draggable={false}
         />
-      </div>
+      </motion.div>
 
       {/* Icon reflection - on the dock surface */}
-      <div
-        style={{
+      <motion.div
+        animate={{
           width: size * 0.9,
           height: size * 0.4,
+          opacity: 0.3,
+        }}
+        transition={{
+          width: { type: "spring", stiffness: 300, damping: 25 },
+          height: { type: "spring", stiffness: 300, damping: 25 },
+        }}
+        style={{
           marginTop: '-4px',
           background: `url(${item.icon}) no-repeat center top`,
           backgroundSize: 'contain',
           transform: 'scaleY(-1)',
-          opacity: 0.3,
           filter: 'blur(1px)',
           maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 70%)',
           WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 70%)',
-          transition: mouseX !== null ? 'all 0.08s ease-out' : 'all 0.15s ease-out',
         }}
       />
 
       {/* Running indicator - small triangle/dot */}
       {isRunning && (
-        <div
+        <motion.div
           className="absolute"
+          animate={{
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
           style={{
             bottom: '-2px',
             left: '50%',
@@ -159,6 +188,6 @@ export function DockItem({ item, index, mouseX, dockRef }) {
           }}
         />
       )}
-    </button>
+    </motion.button>
   );
 }

@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useWindowManager } from '../../contexts/WindowManagerContext';
+import { useSound } from '../../hooks/useSound';
 
 // Virtual File System Schema for AI Agent
 const VIRTUAL_FILE_SYSTEM = {
@@ -116,8 +118,10 @@ export function Spotlight({ isOpen, onClose }) {
   const [results, setResults] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [feedback, setFeedback] = useState(null);
+  const [searchHistory, setSearchHistory] = useState([]);
   const inputRef = useRef(null);
   const { openWindow, closeWindow, windows } = useWindowManager();
+  const { play } = useSound();
 
   // Focus input when opened
   useEffect(() => {
@@ -126,8 +130,9 @@ export function Spotlight({ isOpen, onClose }) {
       setQuery('');
       setResults([]);
       setFeedback(null);
+      play('pop');
     }
-  }, [isOpen]);
+  }, [isOpen, play]);
 
   // Handle search
   useEffect(() => {
@@ -171,14 +176,21 @@ export function Spotlight({ isOpen, onClose }) {
   const executeAction = useCallback((item) => {
     if (!item) return;
 
+    // Add to search history
+    if (query && !searchHistory.includes(query)) {
+      setSearchHistory(prev => [query, ...prev.slice(0, 4)]);
+    }
+
     if (item.type === 'application') {
+      play('click');
       openWindow(item.appType, { title: item.title });
       onClose();
     } else if (item.type === 'file' && item.action === 'download') {
+      play('click');
       window.open(item.url, '_blank');
       onClose();
     }
-  }, [openWindow, onClose]);
+  }, [openWindow, onClose, query, searchHistory, play]);
 
   // Handle keyboard navigation
   const handleKeyDown = (e) => {
@@ -210,89 +222,142 @@ export function Spotlight({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div
-      className="spotlight-overlay"
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-    >
-      <div className="spotlight-container">
-        {/* Search Input */}
-        <div className="relative">
-          <svg
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-[#666]"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="spotlight-overlay"
+          onClick={(e) => e.target === e.currentTarget && onClose()}
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0, y: -20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: -20 }}
+            transition={{ duration: 0.25, type: "spring" }}
+            className="spotlight-container"
           >
-            <circle cx="11" cy="11" r="8"/>
-            <path d="M21 21l-4.35-4.35"/>
-          </svg>
-          <input
-            ref={inputRef}
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Spotlight Search"
-            className="spotlight-input"
-          />
-        </div>
-
-        {/* Feedback */}
-        {feedback && (
-          <div className={`px-4 py-2 text-sm ${
-            feedback.type === 'info' ? 'bg-blue-50 text-blue-700' : 'bg-green-50 text-green-700'
-          }`}>
-            {feedback.message}
-            {feedback.type === 'action' && ' (Press Enter to confirm)'}
-          </div>
-        )}
-
-        {/* Results */}
-        {results.length > 0 && (
-          <div className="spotlight-results">
-            {results.map((item, index) => (
-              <div
-                key={item.path}
-                className={`spotlight-result-item ${index === selectedIndex ? 'selected' : ''}`}
-                onClick={() => executeAction(item)}
-                onMouseEnter={() => setSelectedIndex(index)}
+            {/* Search Input */}
+            <div className="relative">
+              <motion.svg
+                animate={{ rotate: query ? [0, 10, -10, 0] : 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-[#666]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
               >
-                {/* Icon */}
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  </svg>
-                </div>
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+              </motion.svg>
+              <input
+                ref={inputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Spotlight Search (Cmd+Space)"
+                className="spotlight-input"
+              />
+            </div>
 
-                {/* Info */}
-                <div className="flex-1 min-w-0">
-                  <div className="font-medium truncate">{item.title}</div>
-                  <div className={`text-xs truncate ${index === selectedIndex ? 'text-white/70' : 'text-gray-500'}`}>
-                    {item.description}
-                  </div>
-                </div>
-
-                {/* Type badge */}
-                <div className={`text-xs px-2 py-0.5 rounded ${
-                  index === selectedIndex ? 'bg-white/20' : 'bg-gray-100'
-                }`}>
-                  {item.type}
-                </div>
+            {/* Search History */}
+            {!query && searchHistory.length > 0 && (
+              <div className="px-4 py-2 text-xs text-gray-500">
+                Recent Searches
               </div>
-            ))}
-          </div>
-        )}
+            )}
 
-        {/* Empty state */}
-        {query && results.length === 0 && !feedback && (
-          <div className="px-4 py-8 text-center text-gray-500">
-            <p>No results for "{query}"</p>
-            <p className="text-sm mt-1">Try "open resume" or "find projects"</p>
-          </div>
-        )}
-      </div>
-    </div>
+            {/* Feedback */}
+            {feedback && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`px-4 py-2 text-sm ${
+                  feedback.type === 'info' ? 'bg-blue-50 text-blue-700' : 'bg-green-50 text-green-700'
+                }`}
+              >
+                {feedback.message}
+                {feedback.type === 'action' && ' (Press Enter to confirm)'}
+              </motion.div>
+            )}
+
+            {/* Results */}
+            <AnimatePresence>
+              {results.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="spotlight-results"
+                >
+                  {results.map((item, index) => (
+                    <motion.div
+                      key={item.path}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      className={`spotlight-result-item ${index === selectedIndex ? 'selected' : ''}`}
+                      onClick={() => executeAction(item)}
+                      onMouseEnter={() => {
+                        setSelectedIndex(index);
+                        play('click');
+                      }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {/* Icon */}
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                          <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                      </div>
+
+                      {/* Info */}
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium truncate">{item.title}</div>
+                        <div className={`text-xs truncate ${index === selectedIndex ? 'text-white/70' : 'text-gray-500'}`}>
+                          {item.description}
+                        </div>
+                      </div>
+
+                      {/* Type badge */}
+                      <div className={`text-xs px-2 py-0.5 rounded ${
+                        index === selectedIndex ? 'bg-white/20' : 'bg-gray-100'
+                      }`}>
+                        {item.type}
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Empty state */}
+            {query && results.length === 0 && !feedback && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="px-4 py-8 text-center text-gray-500"
+              >
+                <p>No results for "{query}"</p>
+                <p className="text-sm mt-1">Try "open resume" or "find projects"</p>
+              </motion.div>
+            )}
+
+            {/* Help hint */}
+            {!query && (
+              <div className="px-4 py-2 text-xs text-gray-400 text-center">
+                Use ↑↓ to navigate • Enter to select • Esc to close
+              </div>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 

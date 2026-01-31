@@ -1,10 +1,37 @@
+import { useState, useEffect } from 'react';
+import { useEasterEggs, aboutDialogSecrets } from '../../hooks/useEasterEggs';
+
 export function AboutApp() {
+  const [secretIndex, setSecretIndex] = useState(-1);
+  const [clickCount, setClickCount] = useState(0);
+  const { handleLogoClick, easterEggActive } = useEasterEggs();
   const sidebarItems = [
     { label: 'Overview', icon: 'user' },
     { label: 'Skills', icon: 'star' },
     { label: 'Experience', icon: 'briefcase' },
     { label: 'Education', icon: 'book' },
   ];
+
+  // Easter egg: Cycle through secret messages
+  useEffect(() => {
+    if (easterEggActive === 'tripleclick') {
+      setSecretIndex(Math.floor(Math.random() * aboutDialogSecrets.length));
+      const timer = setTimeout(() => setSecretIndex(-1), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [easterEggActive]);
+
+  // Handle logo click for Easter egg
+  const handleProfileClick = (e) => {
+    setClickCount(prev => prev + 1);
+    handleLogoClick();
+    
+    // Show secret message on triple click
+    if (clickCount >= 2) {
+      setSecretIndex(Math.floor(Math.random() * aboutDialogSecrets.length));
+      setClickCount(0);
+    }
+  };
 
   return (
     <div className="h-full flex flex-col">
@@ -110,13 +137,18 @@ export function AboutApp() {
           {/* Profile Card */}
           <div className="flex gap-5 mb-8">
             <div
-              className="w-[72px] h-[72px] rounded-lg flex items-center justify-center text-[28px] font-bold text-white flex-shrink-0"
+              className="w-[72px] h-[72px] rounded-lg flex items-center justify-center text-[28px] font-bold text-white flex-shrink-0 cursor-pointer transition-transform hover:scale-105"
+              onClick={handleProfileClick}
               style={{
-                background: 'linear-gradient(180deg, #7ab8f0 0%, #4088d0 100%)',
-                boxShadow: '0 2px 6px rgba(64, 136, 208, 0.4)',
+                background: easterEggActive 
+                  ? 'linear-gradient(180deg, #ff6b6b 0%, #ff3838 100%)'
+                  : 'linear-gradient(180deg, #7ab8f0 0%, #4088d0 100%)',
+                boxShadow: easterEggActive
+                  ? '0 0 20px rgba(255, 107, 107, 0.6), 0 2px 6px rgba(64, 136, 208, 0.4)'
+                  : '0 2px 6px rgba(64, 136, 208, 0.4)',
               }}
             >
-              FI
+              {easterEggActive ? '🎯' : 'FI'}
             </div>
             <div className="pt-1">
               <h1 className="text-[15px] font-bold text-[#1a1a1a]">Francisco Iannolo</h1>
@@ -174,6 +206,21 @@ export function AboutApp() {
           {/* About */}
           <div>
             <h2 className="text-[11px] font-semibold text-[#555] uppercase tracking-wider mb-3">About</h2>
+            
+            {/* Secret Message */}
+            {secretIndex >= 0 && (
+              <div
+                className="mb-3 p-3 rounded text-[12px] text-center animate-pulse"
+                style={{
+                  background: 'linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%)',
+                  border: '1px solid #ffeeaa',
+                  color: '#856404',
+                }}
+              >
+                🎁 {aboutDialogSecrets[secretIndex]}
+              </div>
+            )}
+            
             <p className="text-[13px] text-[#333] leading-[1.7] mb-3">
               Language-agnostic Senior Software Engineer with 15+ years building
               scalable solutions. Currently the technical backbone at a healthcare
@@ -184,6 +231,12 @@ export function AboutApp() {
               "The language is just the way to accomplish the goal — stable, robust,
               scalable software."
             </p>
+            
+            {easterEggActive && (
+              <div className="mt-4 p-2 bg-black/5 rounded text-[11px] text-center text-[#666]">
+                🕹️ Easter egg activated! Try clicking the logo 3 times...
+              </div>
+            )}
           </div>
         </div>
       </div>
