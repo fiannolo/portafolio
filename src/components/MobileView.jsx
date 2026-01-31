@@ -210,8 +210,8 @@ export function MobileView() {
     { id: 'resume', label: 'Resume', icon: 'doc', gradient: ['#FFAB91', '#E64A19'] }, // Orange/red
     { id: 'projects', label: 'Projects', icon: 'folder', gradient: ['#90CAF9', '#1976D2'] }, // Blue folder
     { id: 'contact', label: 'Contact', icon: 'envelope', gradient: ['#42A5F5', '#1565C0'] }, // Mail blue
-    { id: 'github', label: 'GitHub', icon: 'github', gradient: ['#616161', '#212121'], external: 'https://github.com' }, // Dark
-    { id: 'linkedin', label: 'LinkedIn', icon: 'linkedin', gradient: ['#29B6F6', '#0277BD'], external: 'https://linkedin.com' }, // LinkedIn blue
+    { id: 'github', label: 'GitHub', icon: 'github', gradient: ['#616161', '#212121'], external: 'https://github.com/fiannolo' }, // Dark
+    { id: 'linkedin', label: 'LinkedIn', icon: 'linkedin', gradient: ['#29B6F6', '#0277BD'], external: 'https://linkedin.com/in/fiannolo' }, // LinkedIn blue
     { id: 'notes', label: 'Notes', icon: 'note', gradient: ['#FFF59D', '#F9A825'] }, // Yellow notepad
     { id: 'settings', label: 'Settings', icon: 'gear', gradient: ['#B0BEC5', '#546E7A'] }, // Gray settings
   ];
@@ -639,14 +639,14 @@ export function MobileView() {
                   className="w-20 h-20 mx-auto mb-3 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
                   style={{ background: `linear-gradient(145deg, ${apps[0].gradient[0]}, ${apps[0].gradient[1]})` }}
                 >
-                  JD
+                  FI
                 </div>
-                <h2 className="text-lg font-bold text-gray-900">John Doe</h2>
+                <h2 className="text-lg font-bold text-gray-900">Franco Iannolo</h2>
                 <p className="text-sm text-gray-500">Full Stack Developer</p>
               </div>
               <div className="p-4">
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  Passionate developer creating beautiful, functional experiences with modern technologies.
+                  Ciao! I craft beautiful, functional digital experiences with React, Node.js, and modern web technologies.
                 </p>
               </div>
             </div>
@@ -707,9 +707,9 @@ export function MobileView() {
           <div className="p-4">
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               {[
-                { label: 'Email', value: 'john@example.com', href: 'mailto:john@example.com' },
-                { label: 'GitHub', value: '@johndoe', href: 'https://github.com' },
-                { label: 'LinkedIn', value: 'johndoe', href: 'https://linkedin.com' },
+                { label: 'Email', value: 'fiannolo@gmail.com', href: 'mailto:fiannolo@gmail.com' },
+                { label: 'GitHub', value: '@fiannolo', href: 'https://github.com/fiannolo' },
+                { label: 'LinkedIn', value: 'fiannolo', href: 'https://linkedin.com/in/fiannolo' },
               ].map((c, i, arr) => (
                 <a
                   key={i}

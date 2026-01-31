@@ -5,6 +5,31 @@
 @import "./styles/animations.css";
 @import "./styles/god-tier.css";
 
+/* ============================================
+   ROOT STYLES & CSS VARIABLES
+   ============================================ */
+
+:root {
+  /* Tiger Aqua Colors */
+  --aqua-blue: #3b99fc;
+  --aqua-blue-dark: #2070c0;
+  --tiger-gray: #d4d4d4;
+  --tiger-gray-dark: #a0a0a0;
+  --window-bg: #ffffff;
+  --menubar-bg: rgba(255, 255, 255, 0.78);
+
+  /* Typography */
+  --font-system: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'SF Pro Text', 'Lucida Grande', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+
+  /* Spacing */
+  --touch-target-min: 44px;
+
+  /* Shadows */
+  --shadow-window: 0 10px 40px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-dock: 0 -2px 20px rgba(0, 0, 0, 0.2);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,11 +43,80 @@ html, body, #root {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-system);
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--aqua-blue);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100000;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--aqua-blue);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   TIGER PINSTRIPE BACKGROUND
+   ============================================ */
+
+.tiger-pinstripe {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.03) 1px,
+      rgba(0, 0, 0, 0.03) 2px
+    ),
+    linear-gradient(180deg, #f0f0f0 0%, #d8d8d8 100%);
+}
+
+/* ============================================
+   TOUCH TARGETS & MOBILE
+   ============================================ */
+
+@media (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
+  }
 }
 
 /* Prevent text selection on UI elements */
@@ -35,4 +129,18 @@ body {
 .allow-select {
   user-select: text;
   -webkit-user-select: text;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
 }

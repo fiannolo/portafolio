@@ -62,12 +62,13 @@ export function DockItem({ item, index, mouseX, dockRef }) {
   const size = getSize();
 
   return (
-    <div
+    <button
       ref={itemRef}
-      className="relative flex flex-col items-center cursor-pointer"
+      className="relative flex flex-col items-center cursor-pointer bg-transparent border-none"
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
       onClick={handleClick}
+      aria-label={`${item.title}${isRunning ? ' (running)' : ''}. Click to open.`}
       style={{
         marginBottom: '0px',
         padding: '0 2px',
@@ -158,6 +159,6 @@ export function DockItem({ item, index, mouseX, dockRef }) {
           }}
         />
       )}
-    </div>
+    </button>
   );
 }

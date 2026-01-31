@@ -141,8 +141,11 @@ export function Window({ windowData }) {
       : '';
 
   return (
-    <div
+    <article
       ref={windowRef}
+      role="dialog"
+      aria-label={`${windowData.title} window`}
+      aria-modal="false"
       className={`window ${isActive ? '' : 'inactive'} ${isOpening ? 'window-opening' : ''} ${animationClass}`}
       style={{
         left: position.x,
@@ -169,7 +172,9 @@ export function Window({ windowData }) {
       <div
         className="window-resize-handle"
         onMouseDown={handleResizeMouseDown}
+        role="slider"
+        aria-label="Resize window"
       />
-    </div>
+    </article>
   );
 }

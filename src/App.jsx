@@ -51,6 +51,14 @@ function AppContent() {
 
   return (
     <>
+      {/* Skip Link for Accessibility */}
+      <a
+        href="#main-desktop"
+        className="skip-link"
+      >
+        Skip to main content
+      </a>
+
       {/* Setup Assistant - First-time welcome */}
       {phase === 'setup' && (
         <SetupAssistant onComplete={handleSetupComplete} />
@@ -62,10 +70,13 @@ function AppContent() {
       )}
 
       {/* Main Desktop */}
-      <div
+      <main
+        id="main-desktop"
         className={`h-screen w-screen overflow-hidden bg-black transition-opacity duration-500 ${
           phase === 'ready' ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
+        role="main"
+        aria-label="Mac OS X Tiger Desktop"
       >
         <MenuBar
           onSpotlightClick={() => setSpotlightOpen(true)}
@@ -85,7 +96,7 @@ function AppContent() {
           isOpen={dashboardOpen}
           onClose={() => setDashboardOpen(false)}
         />
-      </div>
+      </main>
     </>
   );
 }

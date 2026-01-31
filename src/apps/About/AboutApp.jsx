@@ -116,24 +116,35 @@ export function AboutApp() {
                 boxShadow: '0 2px 6px rgba(64, 136, 208, 0.4)',
               }}
             >
-              JD
+              FI
             </div>
             <div className="pt-1">
-              <h1 className="text-[15px] font-bold text-[#1a1a1a]">John Doe</h1>
+              <h1 className="text-[15px] font-bold text-[#1a1a1a]">Franco Iannolo</h1>
               <p className="text-[12px] text-[#555] mt-1">Full Stack Developer</p>
-              <p className="text-[11px] text-[#888] mt-1">San Francisco, California</p>
+              <p className="text-[11px] text-[#888] mt-1">Buenos Aires, Argentina</p>
               <div className="flex gap-5 mt-3">
-                {['GitHub', 'LinkedIn', 'Twitter'].map((link) => (
-                  <a
-                    key={link}
-                    href={`https://${link.toLowerCase()}.com/username`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[11px] text-[#0066cc] hover:underline"
-                  >
-                    {link}
-                  </a>
-                ))}
+                <a
+                  href="https://github.com/fiannolo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] text-[#0066cc] hover:underline"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://linkedin.com/in/fiannolo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] text-[#0066cc] hover:underline"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="mailto:fiannolo@gmail.com"
+                  className="text-[11px] text-[#0066cc] hover:underline"
+                >
+                  Email
+                </a>
               </div>
             </div>
           </div>
@@ -163,10 +174,14 @@ export function AboutApp() {
           {/* About */}
           <div>
             <h2 className="text-[11px] font-semibold text-[#555] uppercase tracking-wider mb-3">About</h2>
-            <p className="text-[13px] text-[#333] leading-[1.7]">
-              I'm a passionate developer with experience building web applications
-              using modern technologies. I love creating intuitive user interfaces
-              and solving complex problems.
+            <p className="text-[13px] text-[#333] leading-[1.7] mb-3">
+              Ciao! I'm a Full Stack Developer with a passion for crafting beautiful,
+              functional digital experiences. I specialize in React, Node.js, and
+              modern web technologies.
+            </p>
+            <p className="text-[13px] text-[#333] leading-[1.7] italic">
+              "Benvenuto nel mio mondo" — Welcome to my world of code, creativity,
+              and a dash of nostalgia.
             </p>
           </div>
         </div>

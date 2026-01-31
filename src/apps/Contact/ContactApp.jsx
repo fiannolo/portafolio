@@ -71,7 +71,7 @@ export function ContactApp() {
         <div style={{ borderBottom: '1px solid #d8d8d8' }}>
           <div className="flex items-center px-4 py-2" style={{ borderBottom: '1px solid #e8e8e8' }}>
             <label className="w-[50px] text-[12px] text-[#666] font-medium">To:</label>
-            <span className="text-[12px] text-[#333]">john@example.com</span>
+            <span className="text-[12px] text-[#333]">fiannolo@gmail.com</span>
           </div>
           <div className="flex items-center px-4 py-2" style={{ borderBottom: '1px solid #e8e8e8' }}>
             <label className="w-[50px] text-[12px] text-[#666] font-medium">From:</label>

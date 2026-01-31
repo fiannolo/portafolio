@@ -20,13 +20,16 @@ export function DesktopIcon({ icon }) {
   };
 
   return (
-    <div
+    <button
       className="flex flex-col items-center gap-1 p-1.5 rounded cursor-pointer transition-colors"
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
+      aria-label={`${icon.label}. Double-click to open.`}
+      aria-pressed={selected}
       style={{
         background: selected ? 'var(--desktop-selection)' : 'transparent',
         borderRadius: '4px',
+        border: 'none',
       }}
     >
       {/* Icon with shadow */}
@@ -56,6 +59,6 @@ export function DesktopIcon({ icon }) {
       >
         {icon.label}
       </span>
-    </div>
+    </button>
   );
 }

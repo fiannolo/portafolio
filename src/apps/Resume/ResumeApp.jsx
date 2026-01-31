@@ -9,8 +9,10 @@ export function ResumeApp() {
           borderColor: '#888',
         }}
       >
-        <button
-          className="px-3 py-[2px] text-[11px] text-white rounded font-medium"
+        <a
+          href="/resume.pdf"
+          download
+          className="px-3 py-[2px] text-[11px] text-white rounded font-medium inline-block"
           style={{
             background: 'linear-gradient(180deg, #6ab4f5 0%, #3890d5 100%)',
             border: '1px solid #2870b0',
@@ -18,7 +20,7 @@ export function ResumeApp() {
           }}
         >
           Download PDF
-        </button>
+        </a>
         <span className="text-[11px] text-[#444]">Resume.pdf</span>
         <div className="flex-1" />
         <div className="flex items-center gap-2 text-[11px] text-[#555]">
@@ -39,10 +41,10 @@ export function ResumeApp() {
         >
           {/* Header */}
           <div className="text-center mb-6 pb-4 border-b-2 border-[#333]">
-            <h1 className="text-[22px] font-bold text-[#1a1a1a] tracking-wide">JOHN DOE</h1>
+            <h1 className="text-[22px] font-bold text-[#1a1a1a] tracking-wide">FRANCO IANNOLO</h1>
             <p className="text-[13px] text-[#444] mt-1">Full Stack Developer</p>
             <p className="text-[10px] text-[#666] mt-1">
-              San Francisco, CA &nbsp;•&nbsp; john@example.com &nbsp;•&nbsp; (555) 123-4567
+              Buenos Aires, Argentina &nbsp;•&nbsp; fiannolo@gmail.com &nbsp;•&nbsp; github.com/fiannolo
             </p>
           </div>
 

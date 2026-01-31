@@ -3,15 +3,94 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/assets/icons/system/finder.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mac OS X Tiger Portfolio</title>
-    <meta name="description" content="A portfolio website styled like Mac OS X Tiger" />
-    <!-- Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#3a7bd5" />
+
+    <!-- SEO Meta Tags -->
+    <title>Franco Iannolo — Full Stack Developer | Mac OS X Tiger Portfolio</title>
+    <meta name="description" content="Creative portfolio of Franco Iannolo, Full Stack Developer. Experience a nostalgic journey through Mac OS X Tiger and iPhone OS 1.0 aesthetics. View projects, resume, and contact information." />
+    <meta name="keywords" content="Franco Iannolo, Full Stack Developer, Portfolio, React, Web Developer, Mac OS X, Tiger, Retro Design" />
+    <meta name="author" content="Franco Iannolo" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fiannolo.vercel.app/" />
+    <meta property="og:title" content="Franco Iannolo — Full Stack Developer Portfolio" />
+    <meta property="og:description" content="A nostalgic portfolio experience styled like Mac OS X Tiger (2005) and iPhone OS 1.0 (2007). Explore projects, skills, and contact info." />
+    <meta property="og:image" content="https://fiannolo.vercel.app/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="it_IT" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://fiannolo.vercel.app/" />
+    <meta name="twitter:title" content="Franco Iannolo — Full Stack Developer Portfolio" />
+    <meta name="twitter:description" content="A nostalgic portfolio styled like Mac OS X Tiger and iPhone OS 1.0" />
+    <meta name="twitter:image" content="https://fiannolo.vercel.app/og-image.png" />
+
+    <!-- Fonts - Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Franco Iannolo",
+      "url": "https://fiannolo.vercel.app",
+      "jobTitle": "Full Stack Developer",
+      "email": "fiannolo@gmail.com",
+      "sameAs": [
+        "https://github.com/fiannolo",
+        "https://linkedin.com/in/fiannolo"
+      ],
+      "knowsLanguage": ["en", "it", "es"]
+    }
+    </script>
+
+    <!-- No-JS Fallback Styles -->
+    <noscript>
+      <style>
+        .js-only { display: none !important; }
+        .no-js-message {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+          background: linear-gradient(180deg, #3a7bd5 0%, #6dd5ed 100%);
+          color: white;
+          text-align: center;
+          padding: 2rem;
+        }
+        .no-js-message h1 { font-size: 2rem; margin-bottom: 1rem; }
+        .no-js-message p { font-size: 1.1rem; opacity: 0.9; }
+        .no-js-message a { color: white; text-decoration: underline; }
+      </style>
+    </noscript>
   </head>
   <body>
+    <!-- No-JS Fallback Content -->
+    <noscript>
+      <div class="no-js-message">
+        <h1>Franco Iannolo</h1>
+        <p>Full Stack Developer</p>
+        <p style="margin-top: 2rem;">This portfolio requires JavaScript for the full interactive experience.</p>
+        <p style="margin-top: 1rem;">
+          <a href="mailto:fiannolo@gmail.com">Contact me</a> |
+          <a href="/resume.pdf">Download Resume</a> |
+          <a href="https://github.com/fiannolo">GitHub</a> |
+          <a href="https://linkedin.com/in/fiannolo">LinkedIn</a>
+        </p>
+      </div>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

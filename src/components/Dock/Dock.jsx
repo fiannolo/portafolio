@@ -18,7 +18,7 @@ export function Dock() {
   };
 
   return (
-    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 z-[9998]">
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 z-[9998]" role="navigation" aria-label="Application dock">
       {/* Dock shelf container */}
       <div
         ref={dockRef}
@@ -89,6 +89,6 @@ export function Dock() {
           ))}
         </div>
       </div>
-    </div>
+    </nav>
   );
 }

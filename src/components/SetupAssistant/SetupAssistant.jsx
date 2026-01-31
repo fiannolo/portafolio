@@ -29,11 +29,11 @@ export function SetupAssistant({ onComplete }) {
 > Starting window compositor...
 > Enabling Aqua interface...
 
-Welcome to my world.
+Benvenuto nel mio mondo.
 
-I'm John Doe, a Full Stack Developer
-who loves building beautiful,
-functional experiences.
+I'm Franco Iannolo, a Full Stack Developer
+passionate about crafting beautiful,
+functional digital experiences.
 
 Press any key to continue...`;
 
