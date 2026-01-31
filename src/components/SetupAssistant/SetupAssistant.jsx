@@ -29,11 +29,12 @@ export function SetupAssistant({ onComplete }) {
 > Starting window compositor...
 > Enabling Aqua interface...
 
-Benvenuto nel mio mondo.
+Welcome to my world.
 
-I'm Franco Iannolo, a Full Stack Developer
-passionate about crafting beautiful,
-functional digital experiences.
+I'm Francisco Iannolo, a Senior Software Engineer
+with 15+ years building scalable solutions.
+
+HIPAA healthcare • Team leadership • Remote expert
 
 Press any key to continue...`;
 

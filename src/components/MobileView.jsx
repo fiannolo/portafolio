@@ -641,12 +641,13 @@ export function MobileView() {
                 >
                   FI
                 </div>
-                <h2 className="text-lg font-bold text-gray-900">Franco Iannolo</h2>
-                <p className="text-sm text-gray-500">Full Stack Developer</p>
+                <h2 className="text-lg font-bold text-gray-900">Francisco Iannolo</h2>
+                <p className="text-sm text-gray-500">Senior Software Engineer</p>
+                <p className="text-xs text-gray-400 mt-1">15+ years • Remote • HIPAA</p>
               </div>
               <div className="p-4">
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  Ciao! I craft beautiful, functional digital experiences with React, Node.js, and modern web technologies.
+                  Language-agnostic engineer focused on stable, scalable solutions. The go-to technical expert you want on your team.
                 </p>
               </div>
             </div>
@@ -659,8 +660,9 @@ export function MobileView() {
             <h3 className="text-xs font-semibold text-gray-500 uppercase px-2">Experience</h3>
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               {[
-                { role: 'Senior Developer', company: 'Tech Co.', period: '2022+' },
-                { role: 'Full Stack Dev', company: 'Startup', period: '2019-22' },
+                { role: 'Senior Software Developer', company: 'Adaptivetelehealth', period: '2017+' },
+                { role: 'Support Engineer', company: 'Techaid (Auth0)', period: '2016-17' },
+                { role: 'Team Lead', company: 'Telefonica Movistar', period: '2011-16' },
               ].map((job, i, arr) => (
                 <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-gray-200' : ''}`}>
                   <div className="font-semibold text-sm">{job.role}</div>
@@ -688,9 +690,9 @@ export function MobileView() {
           <div className="p-4">
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               {[
-                { title: 'Portfolio Site', desc: 'Mac OS X themed', tech: 'React' },
-                { title: 'E-Commerce', desc: 'Online store', tech: 'Next.js' },
-                { title: 'Task Manager', desc: 'Productivity app', tech: 'React Native' },
+                { title: 'Healthcare Platform', desc: 'HIPAA telehealth, 100+ features', tech: '8 years' },
+                { title: 'Tiger Portfolio', desc: 'Mac OS X themed site', tech: 'React + Vite' },
+                { title: 'Telecom System', desc: 'Provisioning & infrastructure', tech: 'Team Lead' },
               ].map((p, i, arr) => (
                 <div key={i} className={`px-4 py-3 ${i < arr.length - 1 ? 'border-b border-gray-200' : ''}`}>
                   <div className="font-semibold text-sm">{p.title}</div>

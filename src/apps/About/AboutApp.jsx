@@ -119,9 +119,9 @@ export function AboutApp() {
               FI
             </div>
             <div className="pt-1">
-              <h1 className="text-[15px] font-bold text-[#1a1a1a]">Franco Iannolo</h1>
-              <p className="text-[12px] text-[#555] mt-1">Full Stack Developer</p>
-              <p className="text-[11px] text-[#888] mt-1">Buenos Aires, Argentina</p>
+              <h1 className="text-[15px] font-bold text-[#1a1a1a]">Francisco Iannolo</h1>
+              <p className="text-[12px] text-[#555] mt-1">Senior Software Engineer</p>
+              <p className="text-[11px] text-[#888] mt-1">Caracas, Venezuela • Remote</p>
               <div className="flex gap-5 mt-3">
                 <a
                   href="https://github.com/fiannolo"
@@ -152,10 +152,10 @@ export function AboutApp() {
           {/* Info Grid */}
           <div className="grid grid-cols-2 gap-4 mb-8">
             {[
-              { label: 'Experience', value: '5+ years' },
+              { label: 'Experience', value: '15+ years' },
               { label: 'Focus', value: 'Full Stack' },
-              { label: 'Projects', value: '20+' },
-              { label: 'Open Source', value: 'Contributor' },
+              { label: 'Specialty', value: 'Healthcare/HIPAA' },
+              { label: 'Remote', value: '8+ years' },
             ].map((item) => (
               <div
                 key={item.label}
@@ -175,13 +175,14 @@ export function AboutApp() {
           <div>
             <h2 className="text-[11px] font-semibold text-[#555] uppercase tracking-wider mb-3">About</h2>
             <p className="text-[13px] text-[#333] leading-[1.7] mb-3">
-              Ciao! I'm a Full Stack Developer with a passion for crafting beautiful,
-              functional digital experiences. I specialize in React, Node.js, and
-              modern web technologies.
+              Language-agnostic Senior Software Engineer with 15+ years building
+              scalable solutions. Currently the technical backbone at a healthcare
+              platform, covering architecture, full-stack development, DevOps, and
+              team leadership. I'm the go-to person when you need answers.
             </p>
             <p className="text-[13px] text-[#333] leading-[1.7] italic">
-              "Benvenuto nel mio mondo" — Welcome to my world of code, creativity,
-              and a dash of nostalgia.
+              "The language is just the way to accomplish the goal — stable, robust,
+              scalable software."
             </p>
           </div>
         </div>

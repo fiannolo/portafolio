@@ -21,7 +21,7 @@ export function ResumeApp() {
         >
           Download PDF
         </a>
-        <span className="text-[11px] text-[#444]">Resume.pdf</span>
+        <span className="text-[11px] text-[#444]">Francisco_Iannolo_Resume.pdf</span>
         <div className="flex-1" />
         <div className="flex items-center gap-2 text-[11px] text-[#555]">
           <button className="w-5 h-5 rounded flex items-center justify-center hover:bg-black/10">−</button>
@@ -41,10 +41,10 @@ export function ResumeApp() {
         >
           {/* Header */}
           <div className="text-center mb-6 pb-4 border-b-2 border-[#333]">
-            <h1 className="text-[22px] font-bold text-[#1a1a1a] tracking-wide">FRANCO IANNOLO</h1>
-            <p className="text-[13px] text-[#444] mt-1">Full Stack Developer</p>
+            <h1 className="text-[22px] font-bold text-[#1a1a1a] tracking-wide">FRANCISCO IANNOLO</h1>
+            <p className="text-[13px] text-[#444] mt-1">Senior Software Engineer</p>
             <p className="text-[10px] text-[#666] mt-1">
-              Buenos Aires, Argentina &nbsp;•&nbsp; fiannolo@gmail.com &nbsp;•&nbsp; github.com/fiannolo
+              Caracas, Venezuela &nbsp;•&nbsp; fiannolo@gmail.com &nbsp;•&nbsp; github.com/fiannolo
             </p>
           </div>
 
@@ -54,8 +54,8 @@ export function ResumeApp() {
               Summary
             </h2>
             <p className="text-[10px] text-[#333] leading-[1.7]">
-              Experienced Full Stack Developer with 5+ years of expertise in building
-              scalable web applications. Proficient in React, Node.js, and cloud technologies.
+              Language-agnostic Software Engineer with 15+ years in IT and 8+ years remote experience
+              leading international teams. Focused on creating cost-effective, stable, robust, and scalable solutions.
             </p>
           </div>
 
@@ -67,27 +67,55 @@ export function ResumeApp() {
 
             <div className="mb-3">
               <div className="flex justify-between">
-                <h3 className="text-[10px] font-semibold text-[#1a1a1a]">Senior Developer</h3>
-                <span className="text-[9px] text-[#666]">2022 - Present</span>
+                <h3 className="text-[10px] font-semibold text-[#1a1a1a]">Senior Software Developer</h3>
+                <span className="text-[9px] text-[#666]">2017 - Present</span>
               </div>
-              <p className="text-[9px] text-[#0066cc] mb-1">Tech Company Inc.</p>
+              <p className="text-[9px] text-[#0066cc] mb-1">Adaptivetelehealth, NC (Remote)</p>
               <ul className="text-[9px] text-[#444] list-disc ml-3 space-y-0.5">
-                <li>Led microservices architecture development</li>
-                <li>Mentored junior developers</li>
+                <li>HIPAA-compliant healthcare platform with 100+ features</li>
+                <li>Full lifecycle: architecture, development, DevOps, team lead</li>
+                <li>Go-to technical expert for the entire organization</li>
+              </ul>
+            </div>
+
+            <div className="mb-3">
+              <div className="flex justify-between">
+                <h3 className="text-[10px] font-semibold text-[#1a1a1a]">Support Engineer</h3>
+                <span className="text-[9px] text-[#666]">2016 - 2017</span>
+              </div>
+              <p className="text-[9px] text-[#0066cc] mb-1">Techaid Solutions (Auth0 Client)</p>
+              <ul className="text-[9px] text-[#444] list-disc ml-3 space-y-0.5">
+                <li>SDK testing across multiple languages and platforms</li>
+                <li>Rapid language acquisition and debugging</li>
               </ul>
             </div>
 
             <div>
               <div className="flex justify-between">
-                <h3 className="text-[10px] font-semibold text-[#1a1a1a]">Full Stack Developer</h3>
-                <span className="text-[9px] text-[#666]">2019 - 2022</span>
+                <h3 className="text-[10px] font-semibold text-[#1a1a1a]">Software Development Team Lead</h3>
+                <span className="text-[9px] text-[#666]">2011 - 2016</span>
               </div>
-              <p className="text-[9px] text-[#0066cc] mb-1">Startup Co.</p>
+              <p className="text-[9px] text-[#0066cc] mb-1">Telefonica Movistar Venezuela</p>
               <ul className="text-[9px] text-[#444] list-disc ml-3 space-y-0.5">
-                <li>Built React applications</li>
-                <li>Designed RESTful APIs</li>
+                <li>Led 5-person team as internal software factory</li>
+                <li>Architecture, full-stack development, Oracle DB admin</li>
               </ul>
             </div>
+          </div>
+
+          {/* Education */}
+          <div className="mb-5">
+            <h2 className="text-[11px] font-bold text-[#1a1a1a] border-b border-[#ccc] pb-1 mb-2 uppercase tracking-wider">
+              Education
+            </h2>
+            <div className="flex justify-between">
+              <div>
+                <h3 className="text-[10px] font-semibold text-[#1a1a1a]">Bachelor's in Computer Engineering</h3>
+                <p className="text-[9px] text-[#0066cc]">Andres Bello Catholic University, Caracas</p>
+              </div>
+              <span className="text-[9px] text-[#666]">2009</span>
+            </div>
+            <p className="text-[9px] text-[#444] mt-1">Thesis: "Web Code Generator Using Programming by Demonstration" — Honorific Mention</p>
           </div>
 
           {/* Skills */}
@@ -96,7 +124,8 @@ export function ResumeApp() {
               Skills
             </h2>
             <p className="text-[9px] text-[#444] leading-[1.6]">
-              JavaScript, TypeScript, React, Node.js, Python, PostgreSQL, Docker, AWS
+              Full Stack Development • Architecture Design • Team Leadership • DevOps •
+              API Integrations • Database Management • HIPAA Compliance • Remote Collaboration
             </p>
           </div>
         </div>
@@ -104,13 +133,14 @@ export function ResumeApp() {
 
       {/* Status Bar */}
       <div
-        className="flex items-center justify-center px-3 h-[20px] text-[11px] text-[#555] border-t"
+        className="flex items-center justify-between px-4 h-[20px] text-[11px] text-[#555] border-t"
         style={{
           background: 'linear-gradient(180deg, #e8e8e8 0%, #d8d8d8 100%)',
           borderColor: '#b0b0b0',
         }}
       >
-        1 page
+        <span>Preview — Download PDF for full resume</span>
+        <span>2 pages</span>
       </div>
     </div>
   );
