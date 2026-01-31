@@ -73,8 +73,8 @@ export function WelcomeDialog({ onClose }) {
           </div>
 
           {/* Content */}
-          <div className="p-6">
-            <div className="flex gap-5">
+          <div className="p-8">
+            <div className="flex gap-6">
               {/* Profile Photo */}
               <div className="flex-shrink-0">
                 <div
@@ -133,7 +133,7 @@ export function WelcomeDialog({ onClose }) {
             </div>
 
             {/* Action Button */}
-            <div className="mt-6 flex justify-end">
+            <div className="mt-8 flex justify-end">
               <button
                 onClick={handleClose}
                 className="px-6 py-1.5 text-[12px] font-medium text-white rounded"
