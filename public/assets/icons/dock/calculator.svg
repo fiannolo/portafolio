@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="calcGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#636e72"/>
+      <stop offset="100%" style="stop-color:#2d3436"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="40" height="40" rx="8" fill="url(#calcGrad)"/>
+  <rect x="10" y="10" width="28" height="10" rx="2" fill="#3a4a3a"/>
+  <text x="34" y="17" fill="#76d7c4" font-family="Monaco" font-size="8" text-anchor="end">123</text>
+  <rect x="10" y="24" width="6" height="5" rx="1" fill="#ddd"/>
+  <rect x="18" y="24" width="6" height="5" rx="1" fill="#ddd"/>
+  <rect x="26" y="24" width="6" height="5" rx="1" fill="#ddd"/>
+  <rect x="34" y="24" width="6" height="5" rx="1" fill="#ff9500"/>
+  <rect x="10" y="31" width="6" height="5" rx="1" fill="#ddd"/>
+  <rect x="18" y="31" width="6" height="5" rx="1" fill="#ddd"/>
+  <rect x="26" y="31" width="6" height="5" rx="1" fill="#ddd"/>
+  <rect x="34" y="31" width="6" height="5" rx="1" fill="#ff9500"/>
+</svg>

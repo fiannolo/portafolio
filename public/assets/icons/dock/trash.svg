@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="trashGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ddd"/>
+      <stop offset="100%" style="stop-color:#aaa"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#trashGrad)" d="M14 14h20l-2 28H16l-2-28z"/>
+  <path fill="#bbb" d="M12 10h24v4H12z"/>
+  <path fill="#ccc" d="M18 8h12v4H18z"/>
+  <path fill="#999" d="M18 18v20m6-20v20m6-20v20" stroke="#999" stroke-width="1.5"/>
+</svg>

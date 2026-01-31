@@ -1,0 +1,142 @@
+/* Mac OS X Tiger Theme Variables - Authentic 10.4 Styling */
+:root {
+  /* Window Title Bar - Tiger Unified Look */
+  --titlebar-active: linear-gradient(180deg,
+    #ebebeb 0%,
+    #d9d9d9 50%,
+    #c9c9c9 51%,
+    #d4d4d4 100%
+  );
+  --titlebar-inactive: linear-gradient(180deg,
+    #f6f6f6 0%,
+    #eaeaea 50%,
+    #e0e0e0 51%,
+    #e8e8e8 100%
+  );
+
+  /* Traffic Light Buttons - Authentic Tiger Colors */
+  --btn-close: linear-gradient(180deg, #ff6058 0%, #e33e32 100%);
+  --btn-close-hover: linear-gradient(180deg, #ff7a73 0%, #e85a52 100%);
+  --btn-minimize: linear-gradient(180deg, #ffc130 0%, #e5a000 100%);
+  --btn-minimize-hover: linear-gradient(180deg, #ffd04a 0%, #f0b020 100%);
+  --btn-zoom: linear-gradient(180deg, #35cd4b 0%, #14a620 100%);
+  --btn-zoom-hover: linear-gradient(180deg, #4ddf63 0%, #2cb838 100%);
+  --btn-inactive: linear-gradient(180deg, #d0d0d0 0%, #b8b8b8 100%);
+
+  /* Aqua Colors - Tiger Era */
+  --aqua-blue: #2f7ce8;
+  --aqua-blue-light: #5ba2f5;
+  --aqua-blue-dark: #1a5cb8;
+  --aqua-highlight: rgba(47, 124, 232, 0.3);
+  --aqua-glow: 0 0 8px rgba(47, 124, 232, 0.6);
+
+  /* Menu Bar - Tiger Glossy White */
+  --menubar-bg: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(248, 248, 248, 0.92) 45%,
+    rgba(235, 235, 235, 0.94) 55%,
+    rgba(245, 245, 245, 0.9) 100%
+  );
+  --menubar-border: rgba(0, 0, 0, 0.25);
+  --menubar-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  /* Dock - Glass Effect */
+  --dock-bg: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(200, 200, 200, 0.15) 100%
+  );
+  --dock-border: rgba(255, 255, 255, 0.6);
+  --dock-shadow: 0 0 1px rgba(0, 0, 0, 0.4),
+                 0 8px 32px rgba(0, 0, 0, 0.3),
+                 inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  --dock-reflection: linear-gradient(180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+
+  /* Window - Tiger Drop Shadows */
+  --window-bg: #ffffff;
+  --window-border: rgba(0, 0, 0, 0.3);
+  --window-shadow:
+    0 0 1px rgba(0, 0, 0, 0.3),
+    0 3px 7px rgba(0, 0, 0, 0.15),
+    0 15px 40px rgba(0, 0, 0, 0.25);
+  --window-shadow-inactive:
+    0 0 1px rgba(0, 0, 0, 0.2),
+    0 2px 5px rgba(0, 0, 0, 0.1),
+    0 8px 20px rgba(0, 0, 0, 0.12);
+
+  /* Finder Sidebar - Tiger Brushed Metal */
+  --sidebar-bg: linear-gradient(180deg,
+    #d4dce8 0%,
+    #c0ccd8 50%,
+    #b8c4d0 100%
+  );
+  --sidebar-selected: linear-gradient(180deg, #5890d0 0%, #3a70b0 100%);
+  --sidebar-selected-text: #ffffff;
+  --sidebar-text: #333333;
+
+  /* Text Colors */
+  --text-primary: #000000;
+  --text-secondary: #555555;
+  --text-disabled: #999999;
+  --text-inverted: #ffffff;
+
+  /* Desktop Icons */
+  --desktop-icon-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --desktop-icon-text-shadow:
+    0 0 3px rgba(0, 0, 0, 0.9),
+    0 1px 2px rgba(0, 0, 0, 0.9);
+  --desktop-selection: rgba(47, 124, 232, 0.4);
+
+  /* Scrollbars - Aqua Style */
+  --scrollbar-track: #f0f0f0;
+  --scrollbar-thumb: linear-gradient(90deg, #a8a8a8, #c8c8c8, #a8a8a8);
+  --scrollbar-thumb-hover: linear-gradient(90deg, #888888, #a8a8a8, #888888);
+}
+
+/* Tiger Wallpaper - Aurora Gradient */
+.tiger-wallpaper {
+  background: linear-gradient(180deg,
+    #0a1628 0%,
+    #122a4d 20%,
+    #1a4070 40%,
+    #2a5a8f 60%,
+    #4080b0 80%,
+    #60a0c8 100%
+  );
+  background-size: cover;
+  background-position: center;
+}
+
+/* Aqua-style Scrollbars */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-left: 1px solid #d0d0d0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 1px solid #888888;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+/* Selection Color */
+::selection {
+  background: var(--aqua-highlight);
+  color: #000000;
+}

@@ -1,0 +1,163 @@
+import { useState, useRef } from 'react';
+import { useWindowManager } from '../../contexts/WindowManagerContext';
+import { useSound } from '../../hooks/useSound';
+
+const BASE_SIZE = 48;
+const MAX_SIZE = 80;
+const MAGNIFICATION_RANGE = 140;
+
+export function DockItem({ item, index, mouseX, dockRef }) {
+  const [isBouncing, setIsBouncing] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const itemRef = useRef(null);
+  const { openWindow, getRunningApps, windows, restoreWindow } = useWindowManager();
+  const { play } = useSound();
+
+  const isRunning = getRunningApps().includes(item.appType);
+  const minimizedWindow = windows.find(w => w.appType === item.appType && w.minimized);
+
+  // Calculate size based on mouse distance using cosine for smooth falloff
+  const getSize = () => {
+    if (mouseX === null || !itemRef.current || !dockRef.current) {
+      return BASE_SIZE;
+    }
+
+    const itemRect = itemRef.current.getBoundingClientRect();
+    const dockRect = dockRef.current.getBoundingClientRect();
+    const itemCenterX = itemRect.left + itemRect.width / 2 - dockRect.left;
+    const distance = Math.abs(mouseX - itemCenterX);
+
+    if (distance > MAGNIFICATION_RANGE) {
+      return BASE_SIZE;
+    }
+
+    // Cosine-based scaling for authentic macOS feel
+    const scale = Math.cos((distance / MAGNIFICATION_RANGE) * (Math.PI / 2));
+    return BASE_SIZE + (MAX_SIZE - BASE_SIZE) * scale;
+  };
+
+  const handleClick = () => {
+    if (minimizedWindow) {
+      play('pop');
+      restoreWindow(minimizedWindow.id);
+      return;
+    }
+
+    if (!isRunning && item.appType) {
+      setIsBouncing(true);
+      play('dockBounce');
+      setTimeout(() => setIsBouncing(false), 800);
+    } else {
+      play('click');
+    }
+
+    if (item.appType) {
+      openWindow(item.appType, {
+        title: item.title,
+        size: item.windowSize,
+      });
+    }
+  };
+
+  const size = getSize();
+
+  return (
+    <div
+      ref={itemRef}
+      className="relative flex flex-col items-center cursor-pointer"
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+      onClick={handleClick}
+      style={{
+        marginBottom: '0px',
+        padding: '0 2px',
+      }}
+    >
+      {/* Tooltip */}
+      {showTooltip && (
+        <div
+          className="absolute px-3 py-1.5 rounded whitespace-nowrap pointer-events-none z-50"
+          style={{
+            bottom: size + 14,
+            background: 'rgba(0, 0, 0, 0.75)',
+            color: '#ffffff',
+            fontSize: '12px',
+            fontWeight: '500',
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+          }}
+        >
+          {item.title}
+          {/* Tooltip arrow */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2"
+            style={{
+              bottom: '-6px',
+              width: 0,
+              height: 0,
+              borderLeft: '6px solid transparent',
+              borderRight: '6px solid transparent',
+              borderTop: '6px solid rgba(0, 0, 0, 0.75)',
+            }}
+          />
+        </div>
+      )}
+
+      {/* Icon container - sits ON the dock */}
+      <div
+        className={isBouncing ? 'dock-bounce' : ''}
+        style={{
+          width: size,
+          height: size,
+          transition: mouseX !== null ? 'all 0.08s ease-out' : 'all 0.15s ease-out',
+          transformOrigin: 'bottom center',
+          marginBottom: '4px',
+        }}
+      >
+        <img
+          src={item.icon}
+          alt={item.title}
+          className="w-full h-full object-contain"
+          style={{
+            filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4))',
+          }}
+          draggable={false}
+        />
+      </div>
+
+      {/* Icon reflection - on the dock surface */}
+      <div
+        style={{
+          width: size * 0.9,
+          height: size * 0.4,
+          marginTop: '-4px',
+          background: `url(${item.icon}) no-repeat center top`,
+          backgroundSize: 'contain',
+          transform: 'scaleY(-1)',
+          opacity: 0.3,
+          filter: 'blur(1px)',
+          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 70%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 70%)',
+          transition: mouseX !== null ? 'all 0.08s ease-out' : 'all 0.15s ease-out',
+        }}
+      />
+
+      {/* Running indicator - small triangle/dot */}
+      {isRunning && (
+        <div
+          className="absolute"
+          style={{
+            bottom: '-2px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 0,
+            height: 0,
+            borderLeft: '4px solid transparent',
+            borderRight: '4px solid transparent',
+            borderBottom: '4px solid rgba(50, 50, 50, 0.8)',
+          }}
+        />
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,38 @@
+export const projects = [
+  {
+    id: 1,
+    title: 'Project One',
+    description: 'A sample project showcasing React development skills. Features include state management, API integration, and responsive design.',
+    thumbnail: '/assets/projects/project1.png',
+    technologies: ['React', 'Node.js', 'MongoDB'],
+    github: 'https://github.com/username/project-one',
+    demo: 'https://project-one.demo.com',
+  },
+  {
+    id: 2,
+    title: 'Project Two',
+    description: 'An e-commerce platform built with modern web technologies. Includes shopping cart, payment integration, and user authentication.',
+    thumbnail: '/assets/projects/project2.png',
+    technologies: ['Next.js', 'Stripe', 'PostgreSQL'],
+    github: 'https://github.com/username/project-two',
+    demo: 'https://project-two.demo.com',
+  },
+  {
+    id: 3,
+    title: 'Project Three',
+    description: 'A mobile-first web application for task management. Real-time updates, drag-and-drop interface, and team collaboration features.',
+    thumbnail: '/assets/projects/project3.png',
+    technologies: ['Vue.js', 'Firebase', 'Tailwind'],
+    github: 'https://github.com/username/project-three',
+    demo: 'https://project-three.demo.com',
+  },
+  {
+    id: 4,
+    title: 'Project Four',
+    description: 'A portfolio website template with Mac OS X Tiger aesthetics. Fully interactive window management and dock system.',
+    thumbnail: '/assets/projects/project4.png',
+    technologies: ['React', 'Vite', 'Tailwind CSS'],
+    github: 'https://github.com/username/tiger-portfolio',
+    demo: null,
+  },
+];

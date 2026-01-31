@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="finderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7ec8fc"/>
+      <stop offset="100%" style="stop-color:#0066cc"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="40" height="40" rx="8" fill="url(#finderGrad)"/>
+  <ellipse cx="16" cy="20" rx="4" ry="5" fill="#fff"/>
+  <ellipse cx="32" cy="20" rx="4" ry="5" fill="#fff"/>
+  <ellipse cx="16" cy="21" rx="2" ry="3" fill="#000"/>
+  <ellipse cx="32" cy="21" rx="2" ry="3" fill="#000"/>
+  <path fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" d="M14 32c0 0 4 4 10 4s10-4 10-4"/>
+  <path fill="#fff" d="M22 28h4v8h-4z"/>
+</svg>
