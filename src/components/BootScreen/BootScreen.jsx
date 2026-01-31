@@ -7,15 +7,15 @@ export function BootScreen({ onBootComplete }) {
   const { play } = useSound();
 
   useEffect(() => {
-    // Phase 1: Black screen for 500ms
+    // Phase 1: Black screen for 300ms
     const timer1 = setTimeout(() => {
       setPhase('logo');
       // Play the iconic Mac startup chime
       play('startup');
-    }, 500);
+    }, 300);
 
-    // Phase 2: Show logo, start progress after 800ms
-    const timer2 = setTimeout(() => setPhase('progress'), 1300);
+    // Phase 2: Show logo, start progress after 600ms
+    const timer2 = setTimeout(() => setPhase('progress'), 900);
 
     return () => {
       clearTimeout(timer1);
@@ -30,14 +30,14 @@ export function BootScreen({ onBootComplete }) {
           if (prev >= 100) {
             clearInterval(interval);
             // Start fade out
-            setTimeout(() => setPhase('fade'), 200);
+            setTimeout(() => setPhase('fade'), 100);
             // Complete boot
-            setTimeout(() => onBootComplete(), 700);
+            setTimeout(() => onBootComplete(), 400);
             return 100;
           }
-          return prev + 2;
+          return prev + 4; // Faster progress
         });
-      }, 40);
+      }, 30); // Faster interval
       return () => clearInterval(interval);
     }
   }, [phase, onBootComplete]);

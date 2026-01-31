@@ -5,15 +5,16 @@ import { SystemPreferencesProvider } from './contexts/SystemPreferencesContext';
 import { MenuBar } from './components/MenuBar/MenuBar';
 import { Desktop } from './components/Desktop/Desktop';
 import { Dock } from './components/Dock/Dock';
-import { SetupAssistant } from './components/SetupAssistant/SetupAssistant';
 import { BootScreen } from './components/BootScreen/BootScreen';
+import { WelcomeDialog } from './components/WelcomeDialog/WelcomeDialog';
 import { Spotlight } from './components/Spotlight/Spotlight';
 import { Dashboard } from './components/Dashboard/Dashboard';
 import { MobileView } from './components/MobileView';
 import { useIsMobile } from './hooks/useIsMobile';
 
 function AppContent() {
-  const [phase, setPhase] = useState('setup'); // setup, boot, ready
+  const [phase, setPhase] = useState('boot'); // boot, ready
+  const [showWelcome, setShowWelcome] = useState(true);
   const [spotlightOpen, setSpotlightOpen] = useState(false);
   const [dashboardOpen, setDashboardOpen] = useState(false);
 
@@ -46,7 +47,6 @@ function AppContent() {
   }, []);
 
   // Phase progression
-  const handleSetupComplete = () => setPhase('boot');
   const handleBootComplete = () => setPhase('ready');
 
   return (
@@ -58,11 +58,6 @@ function AppContent() {
       >
         Skip to main content
       </a>
-
-      {/* Setup Assistant - First-time welcome */}
-      {phase === 'setup' && (
-        <SetupAssistant onComplete={handleSetupComplete} />
-      )}
 
       {/* Boot Screen */}
       {phase === 'boot' && (
@@ -96,6 +91,11 @@ function AppContent() {
           isOpen={dashboardOpen}
           onClose={() => setDashboardOpen(false)}
         />
+
+        {/* Welcome Dialog */}
+        {showWelcome && (
+          <WelcomeDialog onClose={() => setShowWelcome(false)} />
+        )}
       </main>
     </>
   );
