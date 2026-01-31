@@ -38,7 +38,7 @@ export function WelcomeDialog({ onClose }) {
         <div
           className="rounded-lg overflow-hidden"
           style={{
-            width: 420,
+            width: 520,
             background: 'linear-gradient(180deg, #e8e8e8 0%, #d4d4d4 100%)',
             boxShadow: `
               0 20px 60px rgba(0, 0, 0, 0.4),
@@ -58,7 +58,7 @@ export function WelcomeDialog({ onClose }) {
             {/* Close button */}
             <button
               onClick={handleClose}
-              className="absolute left-2 w-[13px] h-[13px] rounded-full flex items-center justify-center group"
+              className="absolute left-3 w-[13px] h-[13px] rounded-full flex items-center justify-center group"
               style={{
                 background: 'linear-gradient(180deg, #ff6b5b 0%, #ff4136 100%)',
                 boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2)',
@@ -74,11 +74,27 @@ export function WelcomeDialog({ onClose }) {
 
           {/* Content */}
           <div className="p-8">
+            {/* Welcome Message */}
+            <div
+              className="mb-6 p-4 rounded-lg text-center"
+              style={{
+                background: 'linear-gradient(180deg, #f8f8f8 0%, #f0f0f0 100%)',
+                border: '1px solid #d0d0d0',
+              }}
+            >
+              <p className="text-[14px] text-[#333] leading-relaxed">
+                Welcome to my interactive portfolio!<br />
+                <span className="text-[12px] text-[#666]">
+                  Experience Mac OS X Tiger (2005) nostalgia while exploring my work.
+                </span>
+              </p>
+            </div>
+
             <div className="flex gap-6">
               {/* Profile Photo */}
               <div className="flex-shrink-0">
                 <div
-                  className="w-[100px] h-[100px] rounded-lg overflow-hidden"
+                  className="w-[120px] h-[120px] rounded-xl overflow-hidden"
                   style={{
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(0,0,0,0.1)',
                   }}
@@ -88,13 +104,12 @@ export function WelcomeDialog({ onClose }) {
                     alt="Francisco Iannolo"
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      // Fallback to initials if image fails
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
                   <div
-                    className="w-full h-full items-center justify-center text-[32px] font-bold text-white hidden"
+                    className="w-full h-full items-center justify-center text-[36px] font-bold text-white hidden"
                     style={{
                       background: 'linear-gradient(145deg, #6a9fd4 0%, #3a7fc4 100%)',
                     }}
@@ -106,17 +121,17 @@ export function WelcomeDialog({ onClose }) {
 
               {/* Text Content */}
               <div className="flex-1 pt-1">
-                <h1 className="text-[18px] font-bold text-[#1a1a1a] mb-1">
+                <h1 className="text-[22px] font-bold text-[#1a1a1a] mb-1">
                   Francisco Iannolo
                 </h1>
-                <p className="text-[13px] text-[#555] mb-3">
+                <p className="text-[14px] text-[#555] mb-4">
                   Senior Software Engineer
                 </p>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {['15+ Years', 'HIPAA', 'Remote'].map((tag) => (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {['15+ Years', 'HIPAA', 'Team Lead', 'Remote'].map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 text-[10px] font-medium text-[#555] rounded"
+                      className="px-3 py-1 text-[11px] font-medium text-[#555] rounded"
                       style={{
                         background: 'linear-gradient(180deg, #f5f5f5 0%, #e5e5e5 100%)',
                         border: '1px solid #c0c0c0',
@@ -126,20 +141,20 @@ export function WelcomeDialog({ onClose }) {
                     </span>
                   ))}
                 </div>
-                <p className="text-[11px] text-[#666] leading-relaxed">
-                  Double-click desktop icons or use the Dock to explore my work.
+                <p className="text-[12px] text-[#666] leading-relaxed">
+                  Double-click desktop icons or use the Dock below to explore my projects, resume, and more.
                 </p>
               </div>
             </div>
 
             {/* Action Button */}
-            <div className="mt-8 flex justify-end">
+            <div className="mt-8 flex justify-center">
               <button
                 onClick={handleClose}
-                className="px-6 py-1.5 text-[12px] font-medium text-white rounded"
+                className="px-8 py-2 text-[13px] font-semibold text-white rounded-md"
                 style={{
                   background: 'linear-gradient(180deg, #6ab4f5 0%, #3890d5 50%, #2070c0 100%)',
-                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.3)',
+                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.3)',
                   border: '1px solid #2060a0',
                 }}
               >
